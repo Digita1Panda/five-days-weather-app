@@ -10,7 +10,7 @@
 }
 
 body {
-  background: linear-gradient(180deg, #e75481 -22.84%, #929cde 113.36%);
+  background: hsl(213, 100%, 88%);
   background-attachment: fixed;
 }
 
@@ -21,8 +21,8 @@ h1 {
   font-size: 2rem;
   background-image: linear-gradient(
     to right,
-    rgb(88, 64, 224),
-    rgb(85, 34, 179)
+    rgb(93, 67, 238),
+    rgb(46, 3, 126)
   );
 }
 
@@ -51,7 +51,7 @@ h1 {
   height: 1px;
   width: 100%;
   margin: 20px 0;
-  background: rgb(221, 221, 221);
+  background: rgb(122, 122, 122);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -59,11 +59,11 @@ h1 {
 
 .weather-input .separator::before {
   content: "Searched Locations";
-  color: rgb(221, 221, 221);
+  color: rgb(122, 122, 122);
   font-size: 0.8rem;
   padding: 0 18px;
   margin-top: -4px;
-  background: #c66fa4;
+  background: hsl(213, 100%, 88%);
 }
 
 .weather-input button {
