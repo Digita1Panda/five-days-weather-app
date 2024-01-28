@@ -11,7 +11,6 @@
 
 body {
   background: hsl(213, 100%, 91%);
-  background-attachment: fixed;
 }
 
 h1 {
@@ -139,7 +138,49 @@ h1 {
     rgb(93, 67, 238),
     rgb(46, 3, 126)
   );
-  padding: 20px 20px;
+  padding: 17px 12px;
   border-radius: 10px;
   width: calc(100% / 5);
+}
+
+.weather-cards .card img {
+  max-width: 70px;
+  margin: 5px 0 -10px 0;
+}
+
+@media (max-width: 1400px) {
+  .weather-data .current-weather {
+    padding: 20px;
+  }
+  .weather-cards {
+    flex-wrap: wrap;
+  }
+  .weather-cards .card {
+    width: calc(100% / 4 - 15px);
+  }
+}
+
+@media (max-width: 1200px) {
+  .weather-cards .card {
+    width: calc(100% / 3 - 15px);
+  }
+}
+
+@media (max-width: 950px) {
+  .weather-input {
+    width: 450px;
+  }
+  .weather-cards .card {
+    width: calc(100% / 2 - 10px);
+  }
+}
+
+@media (max-width: 750px) {
+  .container {
+    flex-wrap: wrap;
+    padding: 15px;
+  }
+  .weather-input {
+    width: 100%;
+  }
 }
