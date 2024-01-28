@@ -130,6 +130,16 @@ h1 {
   gap: 45px;
 }
 
+.weather-cards h3 {
+  font-size: 1.1rem;
+  font-weight: 400;
+}
+
+.weather-cards h4 {
+  font-size: 1.1rem;
+  font-weight: 400;
+}
+
 .weather-cards .card {
   list-style: none;
   color: white;
