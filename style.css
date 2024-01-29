@@ -115,9 +115,12 @@ h1 {
   margin-top: -15px;
 }
 
+.current-weather .icon {
+  text-align: center;
+}
+
 .current-weather .icon h4 {
   margin-top: -10px;
-  margin-left: 15px;
 }
 
 .days-forecast h2 {

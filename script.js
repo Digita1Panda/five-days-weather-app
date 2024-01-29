@@ -55,7 +55,7 @@ function weatherDetails(cityName, lat, lon) {
       const uniqueDays = [];
       console.log(data);
 
-      const nextFiveDays = data.list.filter((forecast) => {
+      const nextFiveDays = data.list.filter(function (forecast) {
         const eachDate = new Date(forecast.dt_txt).getDate();
         if (!uniqueDays.includes(eachDate)) {
           return uniqueDays.push(eachDate);
@@ -103,3 +103,8 @@ function cityCoordinates() {
 }
 
 searchButton.addEventListener("click", cityCoordinates);
+cityInput.addEventListener("keydown", function (event) {
+  if (event.key === "Enter") {
+    cityCoordinates();
+  }
+});
