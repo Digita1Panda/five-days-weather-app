@@ -45,15 +45,12 @@ function weatherCards(cityName, forecastItem, index) {
 function weatherDetails(cityName, lat, lon) {
   const weatherURL = `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}`;
 
-  console.log(weatherURL);
-
   fetch(weatherURL)
     .then(function (response) {
       return response.json();
     })
     .then(function (data) {
       const uniqueDays = [];
-      console.log(data);
 
       const nextFiveDays = data.list.filter(function (forecast) {
         const eachDate = new Date(forecast.dt_txt).getDate();
@@ -66,7 +63,6 @@ function weatherDetails(cityName, lat, lon) {
       weatherCardsDiv.innerHTML = "";
       todaysWeather.innerHTML = "";
 
-      console.log(nextFiveDays);
       nextFiveDays.forEach((forecastItem, index) => {
         if (index === 0) {
           todaysWeather.insertAdjacentHTML(
@@ -85,18 +81,14 @@ function weatherDetails(cityName, lat, lon) {
 
 function cityCoordinates() {
   const cityName = cityInput.value.trim();
-  console.log(cityName);
 
   const queryURL = `http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=${apiKey}`;
-
-  console.log(queryURL);
 
   fetch(queryURL)
     .then(function (response) {
       return response.json();
     })
     .then(function (data) {
-      console.log(data);
       const { name, lat, lon } = data[0];
       weatherDetails(name, lat, lon);
     });
