@@ -44,8 +44,7 @@ function weatherCards(cityName, forecastItem, index) {
 }
 
 function weatherDetails(cityName, lat, lon) {
-  console.log("weather details");
-  const weatherURL = `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}`;
+  const weatherURL = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}`;
 
   fetch(weatherURL)
     .then(function (response) {
@@ -82,10 +81,9 @@ function weatherDetails(cityName, lat, lon) {
 }
 
 function cityCoordinates() {
-  console.log("city coord");
   const cityName = cityInput.value.trim();
 
-  const queryURL = `http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=${apiKey}`;
+  const queryURL = `https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=${apiKey}`;
 
   fetch(queryURL)
     .then(function (response) {
