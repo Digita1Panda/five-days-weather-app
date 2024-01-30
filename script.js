@@ -2,6 +2,7 @@ const searchButton = document.querySelector(".search-btn");
 const cityInput = document.querySelector(".city-input");
 const weatherCardsDiv = document.querySelector(".weather-cards");
 const todaysWeather = document.querySelector(".current-weather");
+const searchHistory = document.querySelector(".stored-locations");
 
 const apiKey = "e1ab8ca6e0505dab1bbf3ada39e01168";
 
@@ -43,6 +44,7 @@ function weatherCards(cityName, forecastItem, index) {
 }
 
 function weatherDetails(cityName, lat, lon) {
+  console.log("weather details");
   const weatherURL = `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}`;
 
   fetch(weatherURL)
@@ -80,6 +82,7 @@ function weatherDetails(cityName, lat, lon) {
 }
 
 function cityCoordinates() {
+  console.log("city coord");
   const cityName = cityInput.value.trim();
 
   const queryURL = `http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=${apiKey}`;
@@ -94,9 +97,43 @@ function cityCoordinates() {
     });
 }
 
-searchButton.addEventListener("click", cityCoordinates);
+function loadSearchHistoryFromLocalStorage() {
+  let searches = JSON.parse(localStorage.getItem("searches")) || [];
+  searchHistory.innerHTML = "";
+  searches.forEach((search) => {
+    const newButton = document.createElement("button");
+    newButton.innerHTML = search;
+    searchHistory.append(newButton);
+    newButton.addEventListener("click", function () {
+      cityInput.value = search;
+      cityCoordinates();
+    });
+  });
+}
+
+function saveSearchToLocalStorage(cityName) {
+  let searches = JSON.parse(localStorage.getItem("searches")) || [];
+  searches.push(cityName);
+  localStorage.setItem("searches", JSON.stringify(searches));
+}
+
+searchButton.addEventListener("click", function () {
+  const capitalizedCityName =
+    cityInput.value.charAt(0).toUpperCase() + cityInput.value.slice(1);
+  saveSearchToLocalStorage(capitalizedCityName);
+
+  loadSearchHistoryFromLocalStorage();
+  cityCoordinates();
+});
+
 cityInput.addEventListener("keydown", function (event) {
   if (event.key === "Enter") {
+    const capitalizedCityName =
+      cityInput.value.charAt(0).toUpperCase() + cityInput.value.slice(1);
+    saveSearchToLocalStorage(capitalizedCityName);
+    loadSearchHistoryFromLocalStorage();
     cityCoordinates();
   }
 });
+
+loadSearchHistoryFromLocalStorage();
