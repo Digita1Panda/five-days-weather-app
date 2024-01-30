@@ -2,10 +2,6 @@
 
 App that will track weather forecast
 
-# Daily-Planner
-
-Daily business hours planner
-
 ## Description
 
 - This weather forecast app will search for the country/city you want.
